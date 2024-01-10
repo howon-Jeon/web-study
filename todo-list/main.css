@@ -1,0 +1,31 @@
+/* 영역을 잡아주는 div 태그 */
+/* *{font-family: 'Salsa', cursive;} 전체에 폰트를 적용 */
+.layout {
+    background-color: blue;
+    width: 300px;
+    height: 300px;
+    border: 10px solid #000;
+    /* border 테두리표현 
+    solid : 실선
+    dotted : 점선*/
+
+    border-radius: 100px;
+    /* 테두리 구부리기 */
+
+    text-align: center;
+    /* 글자가 가운데를 위치 내부에 있는 text 정렬 */
+}
+
+.title {
+    color: #fff;
+    font-size: 200%;
+    font-weight: 900;
+    margin-top: 100px;
+    /* 글자가 속해있는 부모 태그로 부터 간격 바깥 여백 */
+
+    padding-top: 50px;
+    /* 속해있는 글자 그대로 p태그가 어느정도 여백을 가질지 결정 */
+
+    font-family: 'Salsa', cursive;
+    /* 사이트에서 가져온 폰트 */
+}

@@ -1,43 +1,27 @@
-<!DOCTYPE html>  <!-- 태그 정보 -->
-<html lang="en">  <!--최상단 태그,lang="en" 지워도 됨.-->
-    <head>  <!--자식태그/ 웹사이트 중요한 정보 -->
-        <meta charset="UTF-8"> <!-- 인코딩 -->  
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- meta 설정해줌으로써 기기에 따라 최적화된 화면으로 보여줌 -->
-        <!-- 사이트 중요한 정보가 들어있음, 페이지 이름 설명 이미지 -->
-        <title>Document</title>
-        <!-- 사이트 제목 표시 -->
-    </head>
-     <body>  <!--화면을 그리는 html 태그 -->
-        <h1>투두리스트</h1>
-        <!-- h1~h6 글씨 크기 조절 -->
-        <h2>투두리스트</h2>
-        <h6>투두리스트</h6>
-        <div>영역</div>
-        <br/><br/>
-        <!-- 중간 띄어쓰기 하고 싶을 때 -->
-        <hr/>
-        <!-- 수평선 생성, 띄어쓰기 -->
-        <div>영역2</div>
-        <!-- 스타일 css 입혀줘야 영역으로서 제대로된 의미를 가짐 -->
-        
-        <p>긴~ 문장을 쓸 때</p>
-        <!-- 텍스트가 가지고 있을 공간을 부여 /문단 구별할 때 유용-->
-        
-        <p>긴~ <span style="color:red">문장</span>을 쓸 때</p>
-        <!-- 특정 문장만 바꾸고 싶을때 span 태그 -->
+<!DOCTYPE html>
+<html lang="en">
 
-        <ul>
-            <li>1</li>
-            <li>2</li>
-        </ul>
-        <input type="text" />
-        <input type="number" />
-        <!-- 사용자에게 입력값을 받을 때 /입력 공간을 생성 -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./main.css" />
+    <!-- 링크태그를 이용해 외부파일 가져오기 
+        rel: 불러올 파일 성격 
+        href : 외부파일 주소 가져오기
+        파일 분리해서 관리 -->
 
-        <button>버튼</button>
 
-        <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzEyMjZfMTMx%2FMDAxNzAzNTUzNjc2NDI3.1HDHjHruKrH9dZAhofTtcAZ_aYvs5CRxCEKBv7I601Ug.TtHSCzGWhzqwHnp6xzPypRL_K8jTBD6Sovwf1iNLh_Ag.PNG.nanugi12%2F%25B3%25AA%25B4%25A9%25B1%25E2%25C2%25AF%25B1%25B82.png&type=a340"/>
-        <!-- 외부이미지 가져오기 -->
-    </body>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Salsa&display=swap" rel="stylesheet">
+    <!-- https://fonts.google.com/ 사이트에서 폰트 가져오기 -->
+
+<body>
+    <div class="layout">
+        <p class="title">글자</p>
+    </div>
+
+</body>
+
 </html>
