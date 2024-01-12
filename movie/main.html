@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>간편 영화 후기</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Salsa&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="./main.css" />
+</head>
+
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <!-- .은 현재 폴더안에 가리킴, ..이전폴더 가리킴 -->
+                <img src="https://images.unsplash.com/photo-1571513151379-9612cf354937?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8"
+                    alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                간편 영화 후기 재밌다
+            </a>
+        </div>
+    </nav>
+    
+    <div class="container" id="container">
+        <div class="jumbotron" id="jumbotron">
+            <h1 class="display-4">인기/최신 영화에 한마디씩!</h1>
+            <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention
+                to featured content or information.</p>
+            <hr class="my-4">
+            <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+            <p class="lead">
+                <a class="btn btn-danger" href="#" role="button">themoviedb로 키발급 받으러가기</a>
+            </p>
+
+
+            <div class="row row-cols-1 row-cols-md-3 g-4"id="cards">
+                <div class="col">
+                  <div class="card">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <button type="button" class="btn btn-success" id="review-button" onclick= "review()">리뷰보기</button>
+                    </div>
+                  </div>
+                </div>
+               
+                </div>
+              </div>
+
+
+              <div class="modal"id="review-modal" tabindex="-1">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">후기</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <p></p>
+                    </div>
+                    <div class="modal-footer">
+                      <input type="text" class="form-control" id="review" style="width:70%"/>
+                      <button type="button" class="btn btn-primary" onclick="addReview()">후기 쓰기</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+
+        <script>
+            let target_id = 0;
+
+            
+            
+            $(document).ready(function(){ //웹페이지가 열리자마자 실행되는 함수 
+            console.log("시작!")
+
+            $.ajax({  //함수에 정해진 객체 값을 전달해주는 방식
+                url:"https://api.themoviedb.org/3/movie/popular?api_key=10923b261ba94d897ac6b81148314a3f&page=1", //api 주소
+                data:{"key":"value"}, //통신방식이 get방식을 경우 서버로 전달할 데이터를
+                type:"GET", //어떤 통신 방식인지 기입
+                success:function(json){ //서버로 부터 전달해오는 데이터를 받는 곳!
+                    console.log(json)
+                    $("#cards").html('')
+                    let movie_list = json.results;
+                    
+                    for(let i=0; i<movie_list.length;i++){
+                        let card= `
+                <div class="col" >
+                  <div class="card" id="cardss">
+                    <img src="${'https://image.tmdb.org/t/p/w500/'+movie_list[i].poster_path}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">${movie_list[i].original_title}</h5>
+                      <button type="button" class="btn btn-success" id="review-button" onclick= "review(${movie_list[i].id})">리뷰보기</button>
+                    </div>
+                  </div>
+                </div> `
+                // original_title 제목을 불러오는 키 값 console에서 확인 가능
+                // poster_path 이미지를 불러오는 키 값
+                        $("#cards").append(card)
+                    }
+                },
+                error:function(err){
+
+                }
+            })
+        }) 
+
+
+        function review(id){
+            target_id = id
+                $.ajax({
+                    url:` http://universeapi.net/review/list?movie_id=${id}` ,
+                    data:{},
+                    type:"GET",
+                    success:function(json){
+                        console.log(json)
+                        let reviews= json.data;
+                        $(".modal-body").html('')
+                        for(let i=0; i<reviews.length; i++){
+                            $(".modal-body").append(`<p>${reviews[i].review}</p>`) 
+                        }
+                    }
+                })
+
+                $('#review-modal').modal('show')
+            }
+
+        function addReview(){
+            let review = $("#review").val();
+            let review_html= `<p>${review}</p>`
+            $.ajax({
+                url:`http://universeapi.net/review/add`,
+                data:{
+                    movie_id:target_id,
+                    review:review
+                },
+                type:"POST",
+                success:function(json){
+                    console.log(json)
+                }
+            })
+            $(".modal-body").append(review_html);
+            $("#review").val();
+        }    
+        </script>
+
+
+</body>
+
+</html>

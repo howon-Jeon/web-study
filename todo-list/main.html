@@ -51,7 +51,7 @@
     </div>
     <script>
         //사용자가 입력 -> 버튼 누르면 -> 값을 가지고 와서 -> 리스트에 추가
-        $(document).ready(function(){
+        $(document).ready(function(){ //웹페이지가 열리자마자 실행되는 함수 
             console.log("시작!")
 
             $.ajax({  //함수에 정해진 객체 값을 전달해주는 방식
@@ -66,7 +66,7 @@
 
                 }
             })
-        }) //웹페이지가 열리자마자 실행되는 함수
+        }) 
 
 
         function addTodo() {
